@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Booklist from "./pages/Booklist"
 import NewBook from "./pages/NewBook"
 import Book from "./pages/Book"
