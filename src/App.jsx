@@ -1,18 +1,24 @@
 import "./App.css"
-import { Route, Link, Routes } from "react-router-dom"
-import Booklist from "./pages/Booklist"
-import Book from "./pages/Book"
-import NewBook from "./pages/NewBook"
+import { useRoutes, Link } from "react-router-dom"
 import NoFound from "./pages/NoFound"
-import BookLayout from "./BookLayout"
-import BookRoutes from "./BookRoutes"
 
 function App() {
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <h1>Home</h1>,
+    },
+    {
+      path: "/books",
+      element: <h2>Books</h2>,
+    },
+    {
+      path: "*",
+      element: <NoFound />,
+    },
+  ])
   return (
     <>
-      <Routes>
-        <Route path="/books" element={<h1>Extra content</h1>}></Route>
-      </Routes>
       <nav>
         <ul>
           <li>
@@ -23,12 +29,7 @@ function App() {
           </li>
         </ul>
       </nav>
-
-      <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/books/*" element={<BookRoutes />} />
-        <Route path="*" element={<NoFound />} />
-      </Routes>
+      {element}
     </>
   )
 }
